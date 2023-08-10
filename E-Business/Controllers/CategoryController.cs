@@ -21,5 +21,10 @@ namespace E_Business.Controllers
             //3.引用_db的数据库数据
             return View(objCategoryList);
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        //这个新的action是create category button的新页面
     }
 }
