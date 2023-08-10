@@ -26,5 +26,15 @@ namespace E_Business.Controllers
             return View();
         }
         //这个新的action是create category button的新页面
+        [HttpPost]
+        public IActionResult Create(Category obj)
+        {
+            _db.Categories.Add(obj);
+            //track of what data is has to add
+            _db.SaveChanges();
+            //go to the database create the category
+            return RedirectToAction("Index");
+        }
+
     }
 }
