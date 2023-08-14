@@ -42,6 +42,7 @@ namespace E_Business.Controllers
                 //track of what data is has to add
                 _db.SaveChanges();
                 //go to the database create the category}
+                TempData["success"] = "category create successfully";
                 return RedirectToAction("Index");
                 //show on the category view page
             }
@@ -80,7 +81,8 @@ namespace E_Business.Controllers
                 _db.Categories.Update(obj);
                 
                 _db.SaveChanges();
-                
+                TempData["success"] = "category edit successfully";
+
                 return RedirectToAction("Index");
                 
             }
@@ -119,8 +121,9 @@ namespace E_Business.Controllers
                 _db.Categories.Remove(obj);
 
                 _db.SaveChanges();
+            TempData["success"] = "category delete successfully";
 
-                return RedirectToAction("Index");
+            return RedirectToAction("Index");
 
             
      
