@@ -8,9 +8,12 @@ namespace E_Business.Models
         [Key]
         public int Id { get; set; }
         [Required]
+        [MaxLength(50)]
         [DisplayName("Category Name")]
         public string Name { get; set; }
         [DisplayName("Display Order")]
+        [Range(1,100,ErrorMessage ="Display Order need between 1-100")]
+        //serverside validation, custome errormessage
         public int DisplayOrder { get; set; }
     }
 }

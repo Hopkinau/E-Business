@@ -28,12 +28,25 @@ namespace E_Business.Controllers
         //这个新的action是create category button的新页面
         [HttpPost]
         public IActionResult Create(Category obj)
-        {
-            _db.Categories.Add(obj);
-            //track of what data is has to add
-            _db.SaveChanges();
-            //go to the database create the category
-            return RedirectToAction("Index");
+        {   
+            if(obj.Name == obj.DisplayOrder.ToString())
+            {
+                ModelState.AddModelError("name","The DisplayOrder cannot same as name");
+            }
+            if (ModelState.IsValid)
+             //if modelstate in the Model.category is valid, the data will save to the database
+             //the validation will check the maxlength etch
+            {
+                _db.Categories.Add(obj);
+                //track of what data is has to add
+                _db.SaveChanges();
+                //go to the database create the category}
+                return RedirectToAction("Index");
+                //show on the category view page
+            }
+            return View();
+
+
         }
 
     }
